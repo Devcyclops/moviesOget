@@ -70,7 +70,8 @@ def download_movies():
             except( ValueError):
                 print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
                 continue
-download_movies()
+if __name__ == "__main__":
+    download_movies()
 
 
 
