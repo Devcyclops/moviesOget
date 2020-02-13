@@ -1,2 +1,2 @@
 # moviesOget
-download movies at a go 
+A simple cli app to download movies at a go 
