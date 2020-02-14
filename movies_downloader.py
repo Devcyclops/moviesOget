@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 import random
 import wget
-#from selenium import webdriver
-#from selenium.webdriver import Chrome
 import time
 import json
 
