@@ -4,8 +4,7 @@ import random
 import wget
 import time
 import json
-
-
+import sys
 
 def download_movies():
     while True:
@@ -71,7 +70,7 @@ def download_movies():
                             print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
                             continue
                 else:
-                    break
+                    sys.exit()
             except(ValueError):
                 print('INPUT MUST EITHER 1 OR 2')
                 continue
