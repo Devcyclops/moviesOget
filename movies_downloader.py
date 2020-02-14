@@ -65,7 +65,6 @@ def download_movies():
             try:
                 user_quality = int(input(">>:"))
                 movie = wget.download(download_links[user_quality])
-                print('*******************DOWNLOADING*******************')
             except( ValueError):
                 print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
                 continue
