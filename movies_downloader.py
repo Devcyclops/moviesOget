@@ -39,32 +39,44 @@ def download_movies():
         #RANDOM SELECTION OF USER AGENTS TO PREVENT EASY BANNING BY THE SITE
         user_agent = random.choice(list_of_user_agents)
         headers = {'User-Agent':user_agent}
-        print('WELCOME TO MOVIESOGET \n ENTER THE NAME OF THE MOVIE SPECIFICALLY EG: AVENGERS AGE OF ULTRON, NOT VAGUE TITLES')
-        movie_name = input('What movie would you like to download?:::::::')
-        url = 'https://lightdlmovies.blogspot.com/search?q={}'.format(movie_name)  
-        get_url = session.get(url, headers=headers)
-        soup = bs(get_url.text, 'html.parser')
-        div = soup.find('div',{'class':'Blog'})
-        div_2 = div.find('div', {'class':'post-body'})
-        a_href = div_2.find_all('a')
-        download_links = {}
-        count = 0
-        del a_href[0]
-        for dl in a_href:
-            link = dl['href']
-            download_links[count] = link
-            count += 1
-        count = 0 
-        for dl in download_links:
-            print(f'{count} ---->>>>> {download_links[count]} \n')
-            count += 1
-        print('ENTER THE NUMBER TO DOWNLOAD THE QUALITY YOU WISH')
+        print('WELCOME TO MOVIESOGET \n ENTER 1 TO CONTINUE OR 2 TO EXIT \n ENTER THE NAME OF THE MOVIE SPECIFICALLY EG: AVENGERS AGE OF ULTRON, \n NOT VAGUE TITLES')
         while True:
             try:
-                user_quality = int(input(">>:"))
-                movie = wget.download(download_links[user_quality])
-            except( ValueError):
-                print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
+                choice = int(input(">>>:"))
+                if choice == 1:
+                    movie_name = input('What movie would you like to download?:::::::')
+                    url = 'https://lightdlmovies.blogspot.com/search?q={}'.format(movie_name)  
+                    get_url = session.get(url, headers=headers)
+                    soup = bs(get_url.text, 'html.parser')
+                    div = soup.find('div',{'class':'Blog'})
+                    div_2 = div.find('div', {'class':'post-body'})
+                    a_href = div_2.find_all('a')
+                    download_links = {}
+                    count = 0
+                    del a_href[0]
+                    for dl in a_href:
+                        link = dl['href']
+                        download_links[count] = link
+                        count += 1
+                    count = 0 
+                    for dl in download_links:
+                        print(f'{count} ---->>>>> {download_links[count]} \n')
+                        count += 1
+                    print('ENTER THE NUMBER TO DOWNLOAD THE QUALITY YOU WISH')
+                    while True:
+                        try:
+                            user_quality = int(input(">>:"))
+                            movie = wget.download(download_links[user_quality])
+                        except( ValueError):
+                            print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
+                            continue
+                else:
+                    break
+            except(ValueError):
+                print('INPUT MUST EITHER 1 OR 2')
                 continue
+            
+       
+        
 if __name__ == "__main__":
     download_movies()
