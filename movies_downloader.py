@@ -23,7 +23,6 @@ def download_movies():
             'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
             'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
-            #Firefox
             'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)',
             'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
             'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)',
@@ -42,10 +41,9 @@ def download_movies():
         #RANDOM SELECTION OF USER AGENTS TO PREVENT EASY BANNING BY THE SITE
         user_agent = random.choice(list_of_user_agents)
         headers = {'User-Agent':user_agent}
-        print('Welcome to MoviesOget')
+        print('WELCOME TO MOVIESOGET \n ENTER THE NAME OF THE MOVIE SPECIFICALLY EG: AVENGERS AGE OF ULTRON, NOT VAGUE TITLES')
         movie_name = input('What movie would you like to download?:::::::')
-        url = 'https://lightdlmovies.blogspot.com/search?q={}'.format(movie_name)
-               
+        url = 'https://lightdlmovies.blogspot.com/search?q={}'.format(movie_name)  
         get_url = session.get(url, headers=headers)
         soup = bs(get_url.text, 'html.parser')
         div = soup.find('div',{'class':'Blog'})
@@ -66,7 +64,8 @@ def download_movies():
         while True:
             try:
                 user_quality = int(input(">>:"))
-                movie = wget.download(download_links[user_quality], bar=bar_thermometer)
+                movie = wget.download(download_links[user_quality])
+                print('*******************DOWNLOADING*******************')
             except( ValueError):
                 print("ENTER A WHOLE NUMBER NOT STRING OR DECIMAL")
                 continue
