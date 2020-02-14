@@ -68,8 +68,3 @@ def download_movies():
                 continue
 if __name__ == "__main__":
     download_movies()
-
-
-
-def something():
-    pass
